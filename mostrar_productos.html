@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lista de Productos</title>
+    <style>
+        body {
+            font-family: sans-serif;
+        }
+        h1, h2 {
+            text-align: center;
+        }
+        .container {
+            width: 80%;
+            margin: 20px auto;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 10px;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+        #seleccionProducto {
+            margin-top: 20px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <h1>Base de Datos - Productos</h1>
+
+    <div class="container">
+        <h2>Primer y Último Producto</h2>
+        <iframe src="obtener_primer_ultimo.php" style="width: 100%; height: 150px; border: none;"></iframe>
+    </div>
+<!--
+    
+    <div class="container" id="seleccionProducto">
+        <h2>Seleccionar Producto por ID</h2>
+        <form action="ver_producto.php" method="get" target="detalleProducto">
+            <label for="producto_id">ID del Producto:</label>
+            <select name="id" id="producto_id">
+                <?php
+                include 'conexion.php';
+                $query_ids = "SELECT ID_Producto FROM productos ORDER BY ID_Producto";
+                $resultado_ids = $conexion->query($query_ids);
+    
+                if ($resultado_ids) {
+                    while ($fila_id = $resultado_ids->fetch_assoc()) {
+                        echo "<option value='" . htmlspecialchars($fila_id['ID_Producto']) . "'>" . htmlspecialchars($fila_id['ID_Producto']) . "</option>";
+                    }
+                    $resultado_ids->free();
+                } else {
+                    echo "<option value=''>Error al cargar IDs: " . htmlspecialchars($conexion->error) . "</option>";
+                }
+                $conexion->close();
+                ?>
+            </select>
+            <button type="submit">Ver Detalles</button>
+        </form>
+        <iframe name="detalleProducto" style="width: 100%; height: 200px; border: none; margin-top: 10px;"></iframe>
+    </div>
+-->
+    <div class="container">
+        <h2>Lista de Todos los Productos</h2>
+        <iframe src="obtener_productos.php" style="width: 100%; height: 400px; border: none;"></iframe>
+    </div>
+
+</body>
+</html>
